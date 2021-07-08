@@ -7,7 +7,7 @@ table.appendChild(tableRow);
 tableRow.appendChild(tableHeader1);
 tableRow.appendChild(tableHeader2);
 
-const appElement = document.getElementById("app");
+const appElement = document.getElementById("webjs-data-table");
 appElement.appendChild(table);
 const tableHeaders = document.querySelectorAll("th");
 tableHeaders.forEach(header => {
