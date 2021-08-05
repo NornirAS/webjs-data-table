@@ -5,7 +5,7 @@ list.style.position = "relative";
 list.style.margin = "0";
 list.style.padding = "0.5em 0";
 
-const appElement = document.getElementById("webjs-data-table");
+const appElement = document.getElementById("webjs-container");
 appElement.appendChild(list);
 
 const li = document.createElement("li");
