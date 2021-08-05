@@ -11,7 +11,6 @@ appElement.appendChild(list);
 const li = document.createElement("li");
 li.innerHTML = "Chat loaded..."
 list.append(li)
-this.gotWebJS = true;
 
 const displayData = ({ RTW }) => {
   const { TIME, USERNAME, UPPERCASE_MSG } = RTW;
