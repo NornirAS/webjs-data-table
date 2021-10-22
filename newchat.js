@@ -17,7 +17,7 @@ messageContainer.appendChild(chatMessages);
 
 const chatInput = document.createElement("div");
 chatInput.innerHTML = `<div class="input-group">
-<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+<input v-model="msg" type="text" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="Message">
 <button @click="sendData()" class="btn btn-outline-secondary" type="button">Button</button>
 </div>`;
 chatInput.style.position = "absolute";
@@ -62,7 +62,3 @@ const scrollDown = () => {
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 }
-
-
-
-
