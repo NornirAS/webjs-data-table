@@ -48,14 +48,6 @@ const displayData = ({ RTW }) => {
   chatMessages.append(li);
 };
 
-setInterval(() => {
-  const li = document.createElement("li");
-  li.innerHTML = "Hello";
-  chatMessages.append(li);
-  scrollDown()
-}, 500)
-
-
 const scrollDown = () => {
   shouldScroll = messageContainer.scrollTop + messageContainer.clientHeight === messageContainer.scrollHeight;
   if (!shouldScroll) {
@@ -64,12 +56,12 @@ const scrollDown = () => {
 }
 
 document.getElementById('submitInput').onclick = () => {
-  const msg = document.getElementById('msgInput').innerHTML;
+  const msg = document.getElementById('msgInput').value;
   sendData(msg);
 };
 
 const sendData = (msg) => {
-  const msgServiceURL = localStorage.getItem('msgServiceUrl');
+  const msgServiceURL = localStorage.getItem('msgServiceURL');
   const msgServiceGhost = localStorage.getItem('msgServiceGhost');
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('username');
