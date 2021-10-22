@@ -17,8 +17,8 @@ messageContainer.appendChild(chatMessages);
 
 const chatInput = document.createElement("div");
 chatInput.innerHTML = `<div class="input-group">
-<input v-model="msg" type="text" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="Message">
-<button @click="sendData()" class="btn btn-outline-secondary" type="button">Button</button>
+<input id="msgInput" type="text" class="form-control" placeholder="Message" aria-label="Message" aria-describedby="Message">
+<button id="submitInput" class="btn btn-outline-secondary" type="button">Button</button>
 </div>`;
 chatInput.style.position = "absolute";
 chatInput.style.bottom = "0";
@@ -48,12 +48,12 @@ const displayData = ({ RTW }) => {
   chatMessages.append(li);
 };
 
-// setInterval(() => {
-//   const li = document.createElement("li");
-//   li.innerHTML = "Hello";
-//   chatMessages.append(li);
-//   scrollDown()
-// }, 500)
+setInterval(() => {
+  const li = document.createElement("li");
+  li.innerHTML = "Hello";
+  chatMessages.append(li);
+  scrollDown()
+}, 500)
 
 
 const scrollDown = () => {
@@ -62,3 +62,26 @@ const scrollDown = () => {
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 }
+
+document.getElementById('submitInput').onclick = () => {
+  const msg = document.getElementById('msgInput').innerHTML;
+  sendData(msg);
+};
+
+const sendData = (msg) => {
+  const msgServiceURL = localStorage.getItem('msgServiceUrl');
+  const msgServiceGhost = localStorage.getItem('msgServiceGhost');
+  const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
+  const headers = {
+    'Synx-Cat': '1',
+    'Content-Type': 'application/x-www-form-urlencoded',
+  }
+  const method = 'POST';
+
+  fetch(`${msgServiceURL}`, {
+    body: `token=${token}&objectID=${msgServiceGhost}&username=${username}&msg=${msg}`,
+    headers,
+    method
+  })
+};
